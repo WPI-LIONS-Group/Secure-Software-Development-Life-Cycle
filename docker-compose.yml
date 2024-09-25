@@ -1,19 +1,21 @@
 services:
   mysql:
-    image: mysql:5.7.37
+    image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: password123
-      MYSQL_DATABASE: SSDLC
-      MYSQL_USER: ServiceUser
+      MYSQL_DATABASE: ssdlc
+      MYSQL_USER: serviceuser
       MYSQL_PASSWORD: password123
     ports:
       - "3306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
-
   legacy-php:
     depends_on:
       - mysql
-    image: php:5.3.29-apache
+    build: .
+    container_name: legacy-php
+    ports:
+      - "8080:80"
     volumes:
       - ./web:/var/www/html
