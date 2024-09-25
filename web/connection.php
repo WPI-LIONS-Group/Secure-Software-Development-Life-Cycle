@@ -1,9 +1,9 @@
 <?php
     // Variables about the database & connection
-    $server = "database"; // The server name is database since docker-compose uses the service name as the hostname
-    $databaseUser = "ServiceUser";
+    $server = "mysql"; // The server name is database since docker-compose uses the service name as the hostname
+    $databaseUser = "serviceuser";
     $databasePassword = "password123";
-    $database = "SSDLC";
+    $database = "ssdlc";
 
     // Create new connection
     $conn = new mysqli($server, $databaseUser, $databasePassword, $database);

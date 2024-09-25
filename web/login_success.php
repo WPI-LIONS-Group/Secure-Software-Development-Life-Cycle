@@ -1,12 +1,20 @@
 <?php
+    // Start the session
+    session_start();
+    
     // Include the connection.php file that contains the connection php code
     include("connection.php");
 
+    // Connect to server and select database.
+    mysql_connect("$server", "$databaseUser", "$databasePassword")or die("cannot connect"); 
+    mysql_select_db("ssdlc") or die("cannot select DB");
+
     // Variables from the session
     $username = mysql_real_escape_string($_SESSION['username']);
+    $password = mysql_real_escape_string($_SESSION['password']);
 
     // Constructed SQL Query String
-    $sql = "SELECT userLevel FROM Authenticate WHERE userID='$username' and userPW='$password'";
+    $sql = "SELECT userLevel FROM Authenticate WHERE userID='$username'";
 
     // Execute the query using the last opened connection from the connection.php file
     $result = mysql_query($sql);
@@ -19,8 +27,6 @@
         switch ($row['userLevel']) {
             // Redirect to the teacher_view.php page
             case 'teacher':
-                // Start the session
-                start_session();
                 // Register the session variables
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
@@ -31,8 +37,6 @@
                 break;
             // Redirect to the student_view.php page
             case 'student':
-                // Start the session
-                start_session();
                 // Register the session variables
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;

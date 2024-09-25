@@ -1,8 +1,15 @@
 <?php
+    // Start the session
+    session_start();
+    
     // Include the connection.php file that contains the connection php code
     include("connection.php");
 
-    // Variables from the previous page comming from the POST method
+    // Connect to server and select database.
+    mysql_connect("$server", "$databaseUser", "$databasePassword")or die("cannot connect"); 
+    mysql_select_db("ssdlc") or die("cannot select DB");
+
+    // Variables from the previous page coming from the POST method
     $username = mysql_real_escape_string($_POST['myusername']);
     $password = mysql_real_escape_string($_POST['mypassword']);
 
@@ -14,8 +21,6 @@
 
     // Handle the result
     if (mysql_num_rows($result) == 1) {
-        // Start the session
-        session_start();
         // Register the session variables
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
