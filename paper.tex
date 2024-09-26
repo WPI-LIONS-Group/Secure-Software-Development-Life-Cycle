@@ -1,0 +1,59 @@
+% Paper follows the following rules:
+%   - 9pt font
+%   - 10pt leading
+%   - 0.33in column separation
+%   - 3.33in textwidth
+%   - 0.75in left, right, and top margins
+%   - 1.00in bottom margin
+%   - 1.00in bottom margin for the first column for ACM Copyright
+%   - no page numbers
+\documentclass[letterpaper,twocolumn]{article}
+\usepackage{times}
+\renewcommand{\normalsize}{\fontsize{9pt}{10pt}\selectfont}
+\setlength{\columnsep}{0.33in}
+\setlength{\textwidth}{3.33in}
+\usepackage[margin=0.75in,top=0.75in,bottom=1.00in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\lfoot{\vspace{1in}}
+\cfoot{}
+\rfoot{}
+\lhead{}
+\chead{}
+\rhead{}
+
+\begin{document} % Start of the document
+\date{} % No date
+\title{Introducing Secure Software Development for High School Educators: A Project-based Learning Approach}
+\author{
+        {\rm Jhon Doe}\\
+        Lorem Ipsum University\\
+        Worcester, MA 01609 USA\\
+        loremipsum@email.com\\
+        \and
+        {\rm Jhon Doe}\\
+        Lorem Ipsum University\\
+        Worcester, MA 01609 USA\\
+        loremipsum@email.com\\
+    }
+\maketitle % Generate the title
+\thispagestyle{fancy} % Use the fancy page style
+
+\section*{Abstract} % The * removes the section number
+This is the abstract.
+
+\section{Introduction} % The section number is displayed
+This is the introduction. \cite{1}
+
+\subsection{Subsection} % Subsections are also numbered
+This is a subsection.
+
+\begin{thebibliography}{9}
+\bibitem{1}
+    % make an example citation
+    Doe, J. (2020). Lorem Ipsum. \textit{Journal of Lorem Ipsum}, 1(1), 1-10.
+\end{thebibliography}
+
+\end{document}
