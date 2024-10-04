@@ -10,12 +10,39 @@ services:
       - "3306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      bridge_net:
+        ipv4_address: 172.25.0.2
+
   legacy-php:
     depends_on:
       - mysql
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.php-apache
     container_name: legacy-php
     ports:
       - "8080:80"
     volumes:
       - ./web:/var/www/html
+    networks:
+      bridge_net:
+        ipv4_address: 172.25.0.3
+
+  kali-linux:
+    build:
+      context: .
+      dockerfile: Dockerfile.kali
+    container_name: kali-linux
+    networks:
+      bridge_net:
+        ipv4_address: 172.25.0.4
+    tty: true
+    stdin_open: true
+
+networks:
+  bridge_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
