@@ -10,9 +10,9 @@ mysql_connect("$server", "$databaseUser", "$databasePassword") or die("cannot co
 mysql_select_db("ssdlc") or die("cannot select DB");
 
 // Variables from the previous page coming from the POST method
-$username = mysql_real_escape_string($_POST['myusername']);
-$password = mysql_real_escape_string($_POST['mypassword']);
-$userLevel = mysql_real_escape_string($_POST['mylevel']);
+$username = $_POST['myusername'];
+$password = $_POST['mypassword'];
+$userLevel = $_POST['mylevel'];
 
 // Constructed SQL Query String
 $sql = "SELECT * FROM Authenticate WHERE userID='$username' AND userPW='$password' AND userLevel='$userLevel'";
