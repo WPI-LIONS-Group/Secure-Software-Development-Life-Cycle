@@ -3,4 +3,6 @@ FROM kalilinux/kali-rolling
 RUN apt-get update
 RUN apt-get install -y net-tools
 RUN apt-get install -y dsniff
+RUN apt-get install -y tcpdump
+RUN apt-get install -y tcpick
 RUN apt-get install -y tmux
