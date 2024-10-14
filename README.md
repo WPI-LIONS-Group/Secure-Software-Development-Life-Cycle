@@ -1,6 +1,9 @@
 # Secure Software Development Lifecycle (SSDLC)
 
 ```bash
+# use this command to connect into the docker container
+docker exec -it kali /bin/bash
+docker exec -it browsh /app/bin/browsh
 # use this to MITM the traffic
 arpspoof -t <target> <gateway>
 arpspoof -t <gateway> <target>
