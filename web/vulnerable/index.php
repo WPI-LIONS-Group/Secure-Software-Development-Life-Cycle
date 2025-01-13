@@ -36,18 +36,6 @@
 			</div>
 			<div id="signup">
 				<form method="post" action="registration.php">
-					<p class="field">
-						<input name="email" type="text" id="email" placeholder="Email" />
-					</p>
-					<p class="field">
-						<input name="user" type="text" id="user" placeholder="Username" />
-					</p>
-					<p class="field">
-						<input name="pass" type="password" id="pass" placeholder="Password" />
-					</p>
-					<p class="field">
-						<input name="confirmPass" type="password" id="confirmPass" placeholder="Confirm Password" />
-					</p>
 					<p class="submit">
 						<button name="submit" type="submit" class="myButton">Sign Up</button>
 					</p>

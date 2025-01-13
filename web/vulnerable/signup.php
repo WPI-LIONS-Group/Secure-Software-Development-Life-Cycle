@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		echo "Error: User ID already exists. Please choose a different User ID.";
 	} else {
 		// Insert into student1 table
-		$sql_student = "INSERT INTO student1 (userID, userPW, firstname, lastname, address, city, state, zip, phone) 
-                        VALUES ('$userID', '$userPW', '$firstname', '$lastname', '$address', '$city', '$state', '$zip', '$phone')";
+		$sql_student = "INSERT INTO student1 (userID, firstname, lastname, address, city, state, zip, phone, math, history, science, english) 
+                        VALUES ('$userID', '$firstname', '$lastname', '$address', '$city', '$state', '$zip', '$phone', 100, 100, 100, 100)";
 
 		// Insert into Authenticate table
 		$sql_auth = "INSERT INTO Authenticate (userID, userPW, userLevel) 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// Execute both queries
 		if ($conn->query($sql_student) === TRUE && $conn->query($sql_auth) === TRUE) {
 			// Redirect to login page if successful
-			header("Location: index.html");
+			header("Location: index.php");
 			exit;
 		} else {
 			echo "Error: " . $conn->error;

@@ -1,6 +1,7 @@
 services:
   mysql:
     image: mysql:5.7
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password123
       MYSQL_DATABASE: ssdlc
@@ -29,26 +30,32 @@ services:
       bridge_net:
         ipv4_address: 172.25.0.3
 
-  kali-linux:
-    build:
-      context: .
-      dockerfile: Dockerfile.kali
-    container_name: kali
+  kali-linux-desktop:
+    image: iphoneintosh/kali-docker:large
+    container_name: kali-desktop
+    environment:
+      VNCPWD: password123
+      VNCPORT: 5900
+      NOVNCPORT: 8080
+    ports:
+      - "9020:8080"
+      - "9021:5900"
     networks:
       bridge_net:
         ipv4_address: 172.25.0.4
     tty: true
     stdin_open: true
 
-  browsh:
-    image: browsh/browsh
-    container_name: browsh
+  desktop:
+    image: prbinu/novnc-desktop
+    environment:
+      TZ: America/Los_Angeles
+    container_name: desktop
+    ports:
+      - "9002:8080"
     networks:
       bridge_net:
         ipv4_address: 172.25.0.5
-    tty: true
-    stdin_open: true
-    entrypoint: /bin/bash
 
 networks:
   bridge_net:
