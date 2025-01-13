@@ -16,7 +16,7 @@ if (isset($_SESSION['userLevel']) && $_SESSION['userLevel'] !== 'teacher') {
 include('connection.php');
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($server, $databaseUser, $databasePassword, $database);
 
 // Check connection
 if ($conn->connect_error) {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($conn->query($updateQuery) === TRUE) {
 		// Vulnerable to XSS by echoing unsanitized user input
-		echo "<p>Successfully Added. <br><a href='https://cayennekevin.com/Newcybersecurity/teacherview.php'>Click Here to Continue</a></p>";
+		echo "<p>Successfully Added. <br><a href='teacher_view.php'>Click Here to Continue</a></p>";
 	} else {
 		echo "Error updating record: " . $conn->error;
 	}
